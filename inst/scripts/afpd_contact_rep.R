@@ -9,7 +9,7 @@ library(tidyr)
 
 devtools::install_github("kbrulois/ligandFinder")
 set_db_path("~/ligandFinder_data")
-paste0(get_db_path(), "/residue_db")
+paste0(ligandFinder:::get_db_path(), "/residue_db")
 
 library(ligandFinder)
 
