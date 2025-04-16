@@ -10,8 +10,9 @@ library(tidyr)
 devtools::install_github("kbrulois/ligandFinder")
 
 library(ligandFinder)
-
 set_db_path("~/ligandFinder_data")
+demo("afpd_rename_files", package = "ligandFinder")
+
 paste0(get_db_path(), "/residue_db")
 
 
