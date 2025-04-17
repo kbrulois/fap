@@ -7,11 +7,13 @@ library(dplyr)
 library(purrr)
 library(tidyr)
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
 
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 BiocManager::install("Biostrings")
-devtools::install_github("kbrulois/ligandFinder")
+if (!requireNamespace("arrow", quietly = TRUE)) install.packages("arrow")
+
+if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+remotes::install_github("kbrulois/ligandFinder")
 
 library(ligandFinder)
 set_db_path("~/ligandFinder_data")
