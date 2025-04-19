@@ -6,6 +6,7 @@
 library(dplyr)
 library(purrr)
 library(tidyr)
+remotes::install_github("kbrulois/ligandFinder")
 
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
