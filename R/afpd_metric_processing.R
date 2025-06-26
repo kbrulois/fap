@@ -32,6 +32,41 @@ get_metrics <- function(run_dir,
 
 }
 
+get_contacts <- function(run_dir,
+                        metric_file = "metrics_v2.csv",
+                        contact_file = "metrics_v2c.rds",
+                        reader = data.table::fread) {
+
+
+
+  jobs <- tibble(dir_name = fs::dir_ls(run_dir, type = "directory") %>% basename) %>%
+    mutate(complete = furrr::future_map_lgl(dir_name, \(x) {
+      file.exists(paste(run_dir, x, file, sep = "/"))
+    })) %>%
+    filter(complete) %>%
+    mutate(group = paste0("job", ntile(n = num_of_grps)))
+
+  res <- furrr::future_map(unique(jobs[["group"]]), \(job) {
+    dirs <- jobs %>%
+      filter(group == job) %>%
+      pull(dir_name)
+
+
+    metrics <- map(dirs,
+                   ~reader(paste0(run_dir, "/", ., "/", file)))
+
+    metrics <- metrics[sapply(metrics, \(x) nrow(x) != 0)]
+
+    bind_rows(metrics)
+
+  }
+  )
+
+  bind_rows(res) %>% as_tibble
+
+}
+
+
 parse_pdb <- function(pdb) {
 
   if(!bio3d::is.pdb(pdb)) pdb <- bio3d::read.pdb(pdb)
@@ -365,7 +400,7 @@ compute_RLdists <- function(input_data) {
     unnest(RLdists)
 }
 
-get_contacts <- function(pw_dist, bw, pdb.xyz, pae) {
+extract_contacts_og <- function(pw_dist, bw, pdb.xyz, pae) {
 
   chains <- unname(pdb.xyz[["chain"]])
   uni_chains <- unique(chains)
@@ -531,9 +566,10 @@ extract_contact_data <- function(bw,
                                       TRUE ~ 0.5)) %>%
       ungroup
 
-  contacts <- left_join(contacts, bw_align, by = "BW")
+  left_join(contacts, bw_align, by = "BW")
 
 }
+
 
 summarize_contacts <- function(contacts) {
 
@@ -579,12 +615,16 @@ summarize_contacts <- function(contacts) {
 
   top_cons <- map(top_contacts, \(x) {
     if(x < total_cons) {
-    df <- contacts %>%
-      slice(1:x) %>%
-      summarise(across(all_of(c(score_cols, extr_sum_cols)), mean, na.rm = TRUE, .names = paste0("{.col}_mean_top", x)))
+      df <- contacts %>%
+        slice(1:x) %>%
+        summarise(across(all_of(c(score_cols, extr_sum_cols)),
+                         mean, na.rm = TRUE,
+                         .names = paste0("{.col}_mean_top", x)))
     } else {
       df <- contacts %>%
-        summarise(across(all_of(c(score_cols, extr_sum_cols)), mean, na.rm = TRUE, .names = paste0("{.col}_mean_top", x)))
+        summarise(across(all_of(c(score_cols, extr_sum_cols)),
+                         mean, na.rm = TRUE,
+                         .names = paste0("{.col}_mean_top", x)))
       df[,] <- NA
     }
     return(df)
@@ -600,10 +640,15 @@ summarize_contacts <- function(contacts) {
     mutate(across(-protein_segment, ~replace_na(., 0))) %>%
     pivot_wider(names_from = protein_segment, values_from = -protein_segment)
 
+  cp_contacts <- contacts %>%
+    mutate(CP = if_else(CP != 1 | is.na(CP), "nonCP", "CP")) %>%
+    group_by(CP) %>%
+    summarise(across(any_of(c(score_cols, extr_sum_cols)), mean, .names = "{.col}_mean")) %>%
+    pivot_wider(names_from = CP, values_from = -CP)
 
-  bind_cols(all_contacts, top_cons, grped_contacts) %>%
-    mutate(totalCP = sum(contacts[["CP"]], na.rm = TRUE), .before = everything()) %>%
-    mutate(totalCP = replace_na(totalCP, 0))
+
+
+  cp_contacts
 
 }
 
