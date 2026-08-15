@@ -50,13 +50,17 @@ out_dir <- c("/scratch/groups/ebutcher/deorphan/models/jan30")
 job_dir <- "/oak/stanford/groups/ebutcher/deorphan-AI-ze/scripts/uni_pep"
 out_dir <- c("/scratch/groups/ebutcher/deorphan/models/uni_pep")
 
-job_dir <- "/oak/stanford/groups/ebutcher/deorphan-AI-ze/scripts/top50dbc"
+job_dir <- "/oak/stanford/groups/ebutcher/deorphan-AI-ze/scripts/top50cymc"
 out_dir <- c("/scratch/groups/ebutcher/deorphan/models/top50dbc")
 
-run_name <- "dTbm"
+
+run_name <- "dbxJuly"
 
 job_dir <- paste0("/oak/stanford/groups/ebutcher/deorphan-AI-ze/scripts/", run_name)
 out_dir <- paste0("/scratch/groups/ebutcher/deorphan/models/", run_name)
+
+
+
 
 
 gpcr_list <- readRDS(system.file("extdata/gpcr_list.rds", package = "ligandFinder"))
@@ -180,7 +184,7 @@ do_renaming(run_dir = run_dir,
 run_dir <- unique(out_dat$out_dir)
 
 
-purrr::walk(run_dirs, tar_run_dir)
+purrr::walk(run_dir, tar_run_dir)
 
 
 
