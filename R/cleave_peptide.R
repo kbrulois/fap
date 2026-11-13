@@ -4,7 +4,7 @@
 ## AF-DB residue numbering matches UniProt sequence position (1-based), so a
 ## (uniprot, start, end) triple maps directly onto atoms in the cached
 ## structure.  The cache is the layout produced by
-## inst/scripts/af_db_bulk_download.sh — see read_af_structure() in
+## inst/scripts/structures/af_db_bulk_download.sh — see read_af_structure() in
 ## af_db_access.R for the lookup order (PDB → CIF → EBI download).
 ##
 ## Designed to produce ligand PDBs consumable by

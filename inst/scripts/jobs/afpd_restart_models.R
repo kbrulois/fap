@@ -2,12 +2,11 @@
 
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 num_cores <- as.integer(Sys.getenv("SLURM_CPUS_PER_TASK"))
 future::plan(strategy = future::multicore(workers = num_cores))

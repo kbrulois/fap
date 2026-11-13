@@ -66,10 +66,10 @@ gtp2 <- left_join(gtp %>% distinct(uniprot_id, .keep_all = TRUE),
 
 
 
-czList <- data.table::fread(system.file("extdata/Catherines_gpcrs_List_ballesteros_numbering.txt", package = "ligandFinder")) %>%
+czList <- data.table::fread(system.file("extdata/Catherines_gpcrs_List_ballesteros_numbering.txt", package = "fap")) %>%
   as_tibble
 
-ecbList <- data.table::fread(system.file("extdata/GPCR list draft March 2025 for APACE ecb orphan.txt", package = "ligandFinder")) %>%
+ecbList <- data.table::fread(system.file("extdata/GPCR list draft March 2025 for APACE ecb orphan.txt", package = "fap")) %>%
   as_tibble
 
 ecbList <- left_join(ecbList %>% dplyr::rename(gene = Gene_human), czList, by = "gene")
@@ -259,11 +259,11 @@ thing <- c("OR2I1", "OR5BS1", "OR51C1", "OR56B2", "OR8G3")
 
 comb_gpcr[comb_gpcr$gene_name_primary %in% thing, "uniprot_name"][[1]] <- c("OR2I1", "O5BS1", "O51C1", "O56B2", "OR8G3")
 
-fasta_files <- c(system.file("extdata/hGPCRs_classA.fasta", package = "ligandFinder"),
-                 system.file("extdata/2024_07_UniProt_GtoP_peptide_and_orphan_GPCRs.fasta", package = "ligandFinder"))
+fasta_files <- c(system.file("extdata/hGPCRs_classA.fasta", package = "fap"),
+                 system.file("extdata/2024_07_UniProt_GtoP_peptide_and_orphan_GPCRs.fasta", package = "fap"))
 
-fasta_files <- c('~/R_projects/ligandFinder/inst/extdata/hGPCRs_classA.fasta',
-                 '~/R_projects/ligandFinder/inst/extdata/2024_07_UniProt_GtoP_peptide_and_orphan_GPCRs.fasta')
+fasta_files <- c('~/R_projects/fap/inst/extdata/hGPCRs_classA.fasta',
+                 '~/R_projects/fap/inst/extdata/2024_07_UniProt_GtoP_peptide_and_orphan_GPCRs.fasta')
 
 a3m <- readLines(fasta_files[1], skipNul = TRUE)
 

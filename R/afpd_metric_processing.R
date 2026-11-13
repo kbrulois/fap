@@ -776,7 +776,7 @@ do_metrics <- function(directory, job, res_dat, run_name = fs::path_file(fs::pat
 submit_metric_jobs <- function(runs,
                                group_size = 1000,
                                job_dir = fs::path("/scratch/groups/ebutcher/deorphan/ligandFinder/metric_jobs", format(Sys.time(), "%Y%m%d_%H%M%S")),
-                               sbatch_script = system.file("scripts/extract_metrics.sh", package = "ligandFinder"),
+                               sbatch_script = system.file("scripts/metrics/extract_metrics.sh", package = "fap"),
                                dry_run = FALSE) {
 
   if(nrow(runs) == 0) {

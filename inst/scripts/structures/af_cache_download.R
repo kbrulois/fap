@@ -13,19 +13,19 @@
 ##
 ## Examples:
 ##   # GPCR cache  (column "uniprot_id" in gpcr_list.rds)
-##   Rscript inst/scripts/af_cache_download.R \
+##   Rscript inst/scripts/structures/af_cache_download.R \
 ##     --list inst/extdata/gpcr_list.rds \
 ##     --col  uniprot_id \
 ##     --out  /oak/stanford/groups/ebutcher/deorphan-AI-ze/gpcr_af_db
 ##
 ##   # Secretome cache  (column "accession")
-##   Rscript inst/scripts/af_cache_download.R \
+##   Rscript inst/scripts/structures/af_cache_download.R \
 ##     --list /oak/stanford/groups/ebutcher/deorphan-AI-ze/secretome_uniprot.rds \
 ##     --col  accession \
 ##     --out  /oak/stanford/groups/ebutcher/deorphan-AI-ze/secretome_af_db
 ##
 ##   # From a plain text list of accessions, one per line
-##   Rscript inst/scripts/af_cache_download.R \
+##   Rscript inst/scripts/structures/af_cache_download.R \
 ##     --list ids.txt \
 ##     --out  /oak/.../my_af_db
 ## ---------------------------------------------------------------------------

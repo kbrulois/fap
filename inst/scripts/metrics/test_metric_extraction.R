@@ -5,12 +5,11 @@
 
 # --- 1. Load package --------------------------------------------------------
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 
 # --- 2. User settings -------------------------------------------------------

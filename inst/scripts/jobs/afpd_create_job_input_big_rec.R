@@ -2,12 +2,11 @@
 
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 genes <- c("BRS3", "FSHR", "G37L1", "GPR37", "GRPR", "LGR4",
            "LGR5", "LGR6", "LSHR", "NMBR", "NPY42", "OPSG2", "OPSG3", "OPSX",

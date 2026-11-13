@@ -17,8 +17,6 @@
 ## here needs it: the verbs come from dplyr, and readr/tools/utils calls are
 ## namespaced. Added to the front of the search path rather than replacing it,
 ## and only when present, so this still runs off a laptop checkout.
-.lf_lib <- "/home/groups/ebutcher/programs/pipeline/R_libs4.1"
-if (dir.exists(.lf_lib)) .libPaths(c(.lf_lib, .libPaths()))
 
 library(dplyr)
 library(tibble)

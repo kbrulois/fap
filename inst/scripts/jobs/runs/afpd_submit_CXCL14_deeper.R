@@ -1,6 +1,5 @@
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 

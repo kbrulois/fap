@@ -128,7 +128,7 @@ afpd_write_feature_fasta <- function(seqs,
   message("wrote ", length(seqs), " record(s) to ", file)
   message("build them with:")
   message("  sbatch --array=1-", length(seqs), " ",
-          "$R_LIBS/ligandFinder/scripts/afpd_create_features.sh ",
+          "$R_LIBS/fap/scripts/features/afpd_create_features.sh ",
           file, if (!is.null(out_dir)) paste0(" ", out_dir) else "")
 
   invisible(file)

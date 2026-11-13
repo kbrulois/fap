@@ -18,9 +18,8 @@
 ## for throughput.  Job files are numbered in priority order, so --first/--last
 ## on afpd_submit_jobs_cli.R is a priority window.
 
-.libPaths("/home/groups/ebutcher/programs/pipeline/R_libs4.1")
 suppressPackageStartupMessages({
-  library(ligandFinder); library(dplyr); library(purrr); library(tibble)
+  library(fap); library(dplyr); library(purrr); library(tibble)
 })
 
 LIGAND   <- "CXL14,100-109"
@@ -114,7 +113,7 @@ tier 2 (RXFP3, RXFP4, APLNR, GPR15/25) job%d-%d
 tier 3 (remaining %d receptors)        job%d-%d
 
 Submit tier 1 now:
-  Rscript $R_LIBS/ligandFinder/exec/afpd_submit_jobs_cli.R \\
+  Rscript $R_LIBS/fap/exec/afpd_submit_jobs_cli.R \\
     -i %s -o %s -f %d -l %d -m 16
 
 then tier 2 (-f %d -l %d), then tier 3 (-f %d -l %d).

@@ -16,8 +16,7 @@
 ##
 ## THE SEQUENCE, one step at a time, read between each:
 ##
-##   .libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
-##   source("/home/groups/ebutcher/kevin/ligandFinder/afpd_write_side.R")
+##   source(system.file("scripts/metrics/afpd_write_side.R", package = "fap"))
 ##   lf_guard()
 ##   tr <- LF_TREES$A                              # then $B, then $C
 ##   ce <- lf_census(tr);            print(ce %>% count(kind, status))
@@ -33,7 +32,7 @@
 ##   lf_submit(tr, g, dry_run = FALSE)             # IRREVERSIBLE: sbatch
 ##
 ## The script is installed with the package, so either of these gets it:
-##   source(system.file("scripts/afpd_write_side.R", package = "ligandFinder"))
+##   source(system.file("scripts/metrics/afpd_write_side.R", package = "fap"))
 ##   source("/home/groups/ebutcher/kevin/ligandFinder/afpd_write_side.R")
 ##
 ## Run the same sequence again, verbatim, after the --mem=64G restart lands.
@@ -48,7 +47,7 @@ suppressPackageStartupMessages({
 })
 if (!requireNamespace("ligandFinder", quietly = TRUE))
   stop("ligandFinder is not installed on this libPath")
-library(ligandFinder)
+library(fap)
 
 LF_RC_FILE  <- "/home/groups/ebutcher/kevin/ligandFinder/random_codes.csv"
 LF_JOB_ROOT <- "/scratch/groups/ebutcher/deorphan/ligandFinder/metric_jobs"
@@ -119,7 +118,7 @@ lf_guard <- function() {
 ## bare list rather than a data frame, so nrow() returns NULL there; 455 more
 ## hold a zero-row table.  459 receptors can therefore never produce depth.
 lf_bw_rows <- function() {
-  gl <- ligandFinder:::gpcr_list
+  gl <- fap:::gpcr_list
   n <- vapply(gl[["bw: full_table"]],
               function(z) { k <- nrow(z); if (is.null(k)) NA_integer_ else as.integer(k) },
               integer(1))
@@ -471,7 +470,7 @@ lf_stage4_parse_files <- function(tree, s3) {
     n_relaxed   = map_int(files, \(x) sum(x$file_type == "relaxed", na.rm = TRUE)),
     n_badtype   = map_int(files, \(x) {
       ft <- x$file_type[!is.na(x$model)]
-      sum(!ft %in% names(ligandFinder:::file_type_conv)) }),
+      sum(!ft %in% names(fap:::file_type_conv)) }),
     n_norank    = map_int(files, \(x) sum(!is.na(x$model) & is.na(x$rank))))
 
   lf_assert(cnt$n_ranked    == tree$n_pred, "ranked file count wrong", cnt$new_dir_name)

@@ -1,10 +1,9 @@
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
-library(ligandFinder)
+library(fap)
 
 args <- commandArgs(trailingOnly = TRUE)
 job_dir <- args[1]

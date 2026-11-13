@@ -1,15 +1,14 @@
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 
 
-gpcr_list_new <- data.table::fread("~/R_projects/ligandFinder/inst/extdata/gpcr_selectiong_Sun_Feb_8_for_dendrograms_ECB_hGPCR_GN_perc_ortho.csv") %>% as_tibble
+gpcr_list_new <- data.table::fread("~/R_projects/fap/inst/extdata/gpcr_selectiong_Sun_Feb_8_for_dendrograms_ECB_hGPCR_GN_perc_ortho.csv") %>% as_tibble
 
 gpcr_list_new <- gpcr_list_new %>%
   filter(decision_Feb8_ecb %in% c("include", "add", "add(check_size)", "include temp", "include_temp", "?? Add for Irina> OR TOO LARGE? Run separatelY"))
@@ -61,7 +60,7 @@ afpd_db <- tibble(files = list.files("/oak/stanford/groups/ebutcher/deorphan-AI-
 
 afpd_db <- afpd_db %>% filter(grepl(".pkl.xz$", files)) %>% mutate(uniprot_name = stringr::str_remove(files, ".pkl.xz$")) %>% pull(uniprot_name)
 
-ligand_list <- openxlsx::read.xlsx("~/R_projects/ligandFinder/inst/extdata/Cyan_peptides_34_Jul2_2026.xlsx")[1:39,]
+ligand_list <- openxlsx::read.xlsx("~/R_projects/fap/inst/extdata/Cyan_peptides_34_Jul2_2026.xlsx")[1:39,]
 
 ligand_list <- ligand_list %>%
                   mutate(uniprot_name = setNames(id_map$`Entry Name`, id_map$`Gene Names (primary)`)[Gene])

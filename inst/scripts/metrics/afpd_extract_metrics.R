@@ -1,11 +1,10 @@
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 fs::dir_copy("/home/groups/ebutcher/kevin/ligandFinder/residue_db",
              "/scratch/groups/ebutcher/deorphan/ligandFinder/residue_db",

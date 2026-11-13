@@ -1,6 +1,6 @@
 
 library(tidyverse)
-library(ligandFinder)
+library(fap)
 
 real_pdbs <- jsonlite::fromJSON("https://gpcrdb.org/services/structure/", )
 

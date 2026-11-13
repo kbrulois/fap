@@ -20,8 +20,7 @@
 ## ap_initial_guess_active_state_receptors.R).
 ## =============================================================================
 
-.libPaths("/home/groups/ebutcher/programs/pipeline/R_libs4.1")
-library(ligandFinder)
+library(fap)
 suppressPackageStartupMessages(library(dplyr))
 
 ## ---- options ---------------------------------------------------------------

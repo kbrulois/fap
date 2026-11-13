@@ -11,7 +11,7 @@
 ## Idempotent: skips files already present unless --refresh is passed.
 ##
 ## Typical Sherlock invocation:
-##   Rscript inst/scripts/gpcr_af_cache_download.R \
+##   Rscript inst/scripts/structures/gpcr_af_cache_download.R \
 ##     --out /oak/stanford/groups/ebutcher/deorphan-AI-ze/gpcr_af_db
 ## ---------------------------------------------------------------------------
 

@@ -27,7 +27,7 @@
 ## -----
 ## Generate them first, from the same job file, so every description has a
 ## match:
-##     Rscript $R_LIBS/ligandFinder/scripts/ap_initial_guess_from_job_file.R \
+##     Rscript $R_LIBS/fap/scripts/features/ap_initial_guess_from_job_file.R \
 ##         --jobs <protein_list.txt> --out <seed_dir>
 ##
 ## A job whose description is not a key in the seed directory runs UNGUIDED

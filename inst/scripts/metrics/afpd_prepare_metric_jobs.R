@@ -44,13 +44,12 @@
 ## nothing except this script reads the raw tree.
 ## ---------------------------------------------------------------------------
 
-.libPaths("/home/groups/ebutcher/programs/pipeline/R_libs4.1")
 
 suppressPackageStartupMessages({
   library(dplyr)
   library(purrr)
   library(tidyr)
-  library(ligandFinder)
+  library(fap)
 })
 
 ## --- per-tree parameters (requirement: one script, no fork for run B) ------

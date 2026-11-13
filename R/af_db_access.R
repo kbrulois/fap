@@ -1,7 +1,7 @@
 ## ---------------------------------------------------------------------------
 ## Read structures out of an AlphaFold-DB cache.
 ##
-## The cache is the layout produced by inst/scripts/af_db_bulk_download.sh:
+## The cache is the layout produced by inst/scripts/structures/af_db_bulk_download.sh:
 ##   <cache_dir>/cif/AF-<UNI>-F1-model_v6.cif    (always present after bulk download)
 ##   <cache_dir>/pdb/AF-<UNI>-F1-model_v6.pdb    (optional; written on demand here)
 ##   <cache_dir>/pae/AF-<UNI>-F1-predicted_aligned_error_v6.json

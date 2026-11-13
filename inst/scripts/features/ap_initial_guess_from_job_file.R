@@ -30,7 +30,7 @@
 ## AP's log -- that string is the key AP actually looks up.
 ##
 ## Usage:
-##   Rscript inst/scripts/ap_initial_guess_from_job_file.R \
+##   Rscript inst/scripts/features/ap_initial_guess_from_job_file.R \
 ##     --jobs      /oak/.../scripts/mxrun/job1.txt \
 ##     --out       /scratch/groups/ebutcher/kevin/ig_seeds \
 ##     --open_dir  /oak/stanford/groups/ebutcher/deorphan-AI-ze/open_models
@@ -40,10 +40,9 @@
 ## fallback (position_ligand_initial_guess) or a receptor added upstream.
 ## =============================================================================
 
-.libPaths("/home/groups/ebutcher/programs/pipeline/R_libs4.1")
 suppressPackageStartupMessages({
   library(optparse)
-  library(ligandFinder)
+  library(fap)
   library(dplyr)
 })
 

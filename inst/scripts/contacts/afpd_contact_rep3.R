@@ -1,11 +1,10 @@
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 num_of_grps <- 16
 
 future::plan(strategy = future::multicore(workers = num_of_grps))

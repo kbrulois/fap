@@ -2,11 +2,10 @@
 
 ml R/4.1.2
 
-export R_LIBS=/home/groups/ebutcher/programs/pipeline/R_libs4.1
 
 conda activate spoc_venv
 
-exec_path=$(Rscript -e 'cat(system.file("exec", package = "ligandFinder"))')
+exec_path=$(Rscript -e 'cat(system.file("exec", package = "fap"))')
 
 dirs=("$1"/*)
 

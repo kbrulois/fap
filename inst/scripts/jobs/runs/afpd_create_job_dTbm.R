@@ -5,12 +5,11 @@
 
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 
 test <- openxlsx::read.xlsx(xlsxFile = "~/Desktop/ligand_receptor_table.xlsx", sheet = 2) %>% as_tibble()

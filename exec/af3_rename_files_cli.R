@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
-library(ligandFinder)
+library(fap)
 library(optparse)
 
 option_list <- list(

@@ -10,14 +10,14 @@
 ##   <out>/pae/AF-<UNI>-F1-predicted_aligned_error_v6.json
 ##
 ## Usage:
-##   bash inst/scripts/af_db_bulk_download.sh <out_dir> [species] [afver]
+##   bash inst/scripts/structures/af_db_bulk_download.sh <out_dir> [species] [afver]
 ##
 ##   <out_dir>   Cache root (required).
 ##   species     human (default) | mouse | rat | zebrafish | yeast | ecoli
 ##   afver       AlphaFold DB version tag (default: v6)
 ##
 ## Example:
-##   bash inst/scripts/af_db_bulk_download.sh \
+##   bash inst/scripts/structures/af_db_bulk_download.sh \
 ##        /oak/stanford/groups/ebutcher/deorphan-AI-ze/af_db human v6
 ##
 ## Wall time on Sherlock: ~10 min download + ~5 min extract for human

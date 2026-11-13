@@ -1,11 +1,10 @@
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 
 
@@ -178,8 +177,8 @@ ligand_list <- test %>%
   mutate(p1_range = stringr::str_replace(p1_range, "x", "-")) %>%
   mutate(model = paste0(p1_id, ",", p1_range))
 
-add_bm <- readRDS(system.file("extdata/aug4_ligands.rds", package = "ligandFinder"))
-add_bm <- readRDS("~/R_projects/ligandFinder/inst/extdata/aug4_ligands.rds")
+add_bm <- readRDS(system.file("extdata/aug4_ligands.rds", package = "fap"))
+add_bm <- readRDS("~/R_projects/fap/inst/extdata/aug4_ligands.rds")
 
 add_bm <- tibble(ligs = add_bm) %>%
           mutate(ligs = if_else(ligs == ">hANF104x151", ">hANFx104x151", ligs)) %>%

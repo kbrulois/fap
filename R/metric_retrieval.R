@@ -94,7 +94,7 @@ get_known_pairs_old <- function() {
 
   id_map <- readRDS(system.file("data/id_mapping.rds", package = "ligandFinder"))
 
-  chemokine_pairs <- readRDS(system.file("data/Chemokine_Pairs.rds", package = "ligandFinder")) %>%
+  chemokine_pairs <- readRDS(system.file("data/Chemokine_Pairs.rds", package = "fap")) %>%
     slice(-1) %>%
     as_tibble
 

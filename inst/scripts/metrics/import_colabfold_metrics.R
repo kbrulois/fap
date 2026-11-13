@@ -5,15 +5,14 @@
 
 
 
-.libPaths('/home/groups/ebutcher/programs/pipeline/R_libs4.1')
 library(dplyr)
 library(purrr)
 library(tidyr)
 remotes::install_github("kbrulois/ligandFinder")
-library(ligandFinder)
+library(fap)
 
 set_db_path("/home/groups/ebutcher/kevin/ligandFinder")
-#demo("afpd_rename_files", package = "ligandFinder")
+#demo("afpd_rename_files", package = "fap")
 
 
 run_analysis_dir <- "/oak/stanford/groups/ebutcher/deorphan-AI-ze/run_analyses"
