@@ -1,0 +1,50 @@
+Package: fap
+Type: Package
+Title: Fast AlphaPulldown: AlphaFold Complex Predictions of GPCRs with Ligands
+Version: 0.1.0
+Author: Kevin Brulois
+Maintainer: Kevin Brulois <kevin.brulois@gmail.com>
+Description: Builds, submits and post-processes AlphaPulldown and AlphaFold 3
+    jobs that pair GPCRs with candidate ligands on the Sherlock cluster: job
+    tables, features and initial-guess poses, metric and contact extraction,
+    AlphaFold 3 runs, coevolution, and models of the extracted contacts.
+    Split from ligandFinder, whose residue database and helpers it uses.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Depends:
+  R (>= 4.1.0),
+  ligandFinder
+Imports:
+  magrittr,
+  dplyr (>= 1.1.0),
+  purrr,
+  data.table,
+  tidyr,
+  tibble,
+  stringr,
+  fs,
+  rlang,
+  jsonlite,
+  ggplot2
+Suggests:
+  optparse,
+  arrow,
+  bio3d,
+  furrr,
+  future,
+  ape,
+  DescTools,
+  MASS,
+  glue,
+  gtools,
+  reshape2,
+  patchwork,
+  svglite,
+  ggbeeswarm,
+  ggfx,
+  ggh4x,
+  ggplotify,
+  ggrastr,
+  ggseqlogo,
+  ggtree

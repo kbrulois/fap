@@ -1,22 +1,5 @@
 
-get_nonNA_ranges <- function(x, column = "AA") {
-
-  tmp <- x %>%
-    mutate(id = 1:n()) %>%
-    mutate(non_na_group = cumsum(!is.na(!!sym(column)) & lag(is.na(!!sym(column)), default = TRUE))) %>%
-    filter(!is.na(!!sym(column))) %>%
-    group_by(non_na_group) %>%
-    summarize(start = min(id), end = max(id)) %>%
-    select(-non_na_group)
-
-  if(nrow(tmp) > 1) {
-    tmp <- tibble(start = NA, end = NA)
-  }
-  tmp
-
-}
-
-get_unique_or_collapse <- function(x, y) {
+get_unique_or_collapse_pair <- function(x, y) {
   uni_res <- unique(c(x,y))
   uni_res <- uni_res[!is.na(uni_res)]
   if(length(uni_res) == 1) {
@@ -28,7 +11,7 @@ get_unique_or_collapse <- function(x, y) {
   }
 }
 
-get_unique_or_collapse_v <- Vectorize(get_unique_or_collapse)
+get_unique_or_collapse_v <- Vectorize(get_unique_or_collapse_pair)
 
 get_unique_or_collapse <- function(x, delim = "; ") {
   if(length(unique(x)) == 1) {

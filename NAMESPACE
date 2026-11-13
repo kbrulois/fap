@@ -1,0 +1,6 @@
+exportPattern("^[[:alpha:]]+")
+importFrom(magrittr,"%>%")
+import(data.table)
+import(dplyr)
+import(purrr)
+importFrom(ligandFinder,AA_colors,distance,extra_color,factor_to_uniprotFeature,get_db_path,html_slide_show,map_table)
