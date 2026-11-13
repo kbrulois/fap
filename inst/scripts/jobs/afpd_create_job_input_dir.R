@@ -259,8 +259,8 @@ to_run <- to_run %>%
 
 
 
-neuro <- openxlsx::read.xlsx(system.file("extdata/MultiPep_Scores_Top1068_EXTRA_BMP8B_to_COL16A1_updated_peptides_2025-10-20T20-06-57-002Z_html orig.xlsx",
-                                         package = "ligandFinder"))
+neuro <- openxlsx::read.xlsx(system.file("extdata/MultiPep_Scores_Top1068_2025-10-20.xlsx",
+                                         package = "fap"))
 
 colnames(neuro)[c(9, 32)] <- c("Peptide2", "GeneName2")
 
