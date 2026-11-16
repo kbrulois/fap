@@ -25,6 +25,14 @@ both packages into that library, then source the file from `~/.bashrc` once:
 echo 'source /home/groups/ebutcher/programs/pipeline/R_libs4.1/fap/cluster/sherlock_env.sh' >> ~/.bashrc
 ```
 
+Install or update both packages there, from Sherlock (ligandFinder first; fap depends on it):
+
+```r
+lib <- "/home/groups/ebutcher/programs/pipeline/R_libs4.1"
+remotes::install_github("kbrulois/ligandFinder", lib = lib)
+remotes::install_github("kbrulois/fap", lib = lib)
+```
+
 After that, scripts need only `library(fap)`. Shell lines reach installed
 scripts as `$R_LIBS/fap/scripts/<folder>/<script>` or with
 `system.file("scripts/<folder>/<script>", package = "fap")`. sbatch jobs inherit
